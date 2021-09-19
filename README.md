@@ -2,6 +2,9 @@
 - Download Node.js di https://nodejs.org/en/download/ dan install
 - Download MongoDB atau RDBMS
 
+## Dokumentasi Node.js
+- https://nodejs.org/en/docs/
+
 ## Membuat Projek
 - Pada terminal ketik ``` $ npm install express ``` untuk menginstall express
 - Import express pada file app.js
@@ -82,4 +85,38 @@ app.listen(3000);
   <span class="name-column"><%= item.name %></span>
 </li>
 <% }); %>
+```
+
+## Menambahkan Tautan Diantara Halaman
+``` html
+<a class="index-button" href="/index">Lihat daftar</a>
+```
+
+
+## Mengintegrasikan Database
+- Untuk menghubungkan MySQL ke Node.js https://www.mysqltutorial.org/mysql-nodejs/connect/
+- install paket mysql di terminal : ```$ npm install mysql```
+- Import paket mysql pada file app.js
+``` javascript
+ const mysql = require('mysql');
+ const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'progate',
+  password: 'password',
+  database: 'list_app'
+});
+```
+
+## Menggunakan Database
+- Pada file app.js, atur route agar dapat mengakses data dari database
+``` javascript
+app.get('/index', (req, res) => {
+  // Mengakses data dari database 
+  connection.query(
+    'SELECT * FROM items',
+    (error, results) => {
+      console.log(results);
+      res.render('index.ejs');
+    }
+});
 ```

@@ -64,3 +64,22 @@ app.listen(3000);
 <link rel="stylesheet" href="/css/style.css">
 <img src="/images/top.png">
 ```
+
+## Menampilkan HTML menggunakan forEach
+- Pada file .ejs, definisikan variabel yang berupa array
+``` javascript
+<% const items = [
+   {id: 1, name: 'kentang'},
+   {id: 2, name: 'wortel'},
+   {id: 3, name: 'bawang'}
+]; %>
+```
+- Pada file .ejs, variabel items yang menggunakan ```forEach``` menerapkan fungsi yang ditentukan untuk setiap item dalam array tertentu secara individual
+``` javascript
+<% items.forEach((item) => { %>
+<li>
+  <span class="id-column"><%= item.id %></span>
+  <span class="name-column"><%= item.name %></span>
+</li>
+<% }); %>
+```

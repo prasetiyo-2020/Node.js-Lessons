@@ -36,11 +36,12 @@ app.listen(3000);
 - Lalu pada terminal ketikan perintah ``` $ node app.js ```
 - Agar tidak me-restart server secara manual, mari instal nodemon di terminal : ``` $ npm install nodemon ```, suatu paket npm yang dapat me-restart server secara otomatis saat ada perubahan dalam file.
 - Pada windows : ``` .\\node_modules\\.bin\\nodemon app.js ```
-![image](https://user-images.githubusercontent.com/84963363/133931725-e2ac9508-e25d-42ab-918a-e3301d1262b1.png)
+![Capture](https://user-images.githubusercontent.com/84963363/133953699-af6eee10-3e2e-43a6-ae23-f9dc791b8398.PNG)
 - Agar lebih mudah lagi, pada package.json ```"start": ".\\node_modules\\.bin\\nodemon app.js"```
-![image](https://user-images.githubusercontent.com/84963363/133931881-08cf16fe-7b88-457f-af4c-1e3ed5d50fa7.png)
+![Capture](https://user-images.githubusercontent.com/84963363/133953604-6f1d82aa-f91b-4390-b5a5-e3274e8cd537.PNG)
 - Jalankan command ``` npm run start ``` dan periksa apakah kamu bisa memulai server menggunakan nodemon.
-![image](https://user-images.githubusercontent.com/84963363/133931978-d2bbdf92-1fb2-4782-b5e0-fc035881c0b1.png)
+![npm run start](https://user-images.githubusercontent.com/84963363/133953800-f843c9fe-1507-47ff-9f53-da4b321ddc01.png)
+
 
 
 ## Route

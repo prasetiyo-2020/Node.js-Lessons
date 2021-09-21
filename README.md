@@ -115,9 +115,9 @@ app.listen(3000);
  const mysql = require('mysql');
  const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'progate',
+  user: 'root',
   password: 'password',
-  database: 'list_app'
+  database: 'app_list'
 });
 ```
 

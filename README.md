@@ -147,3 +147,9 @@ app.get('/index', (req, res) => {
   );
 });
 ```
+
+## Mendapatkan Nilai Formulir
+- ``` app.use(express.urlencoded({extended: false})); ```
+
+## Menggunakan redirect (pengalihan)
+- ``` res.redirect('/index') ```

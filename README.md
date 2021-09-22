@@ -12,7 +12,7 @@
 
 ## Membuat Projek
 - Pada terminal ketik ``` $ npm install express ``` untuk menginstall express
-- Import express pada file app.js
+- Import express pada file app.js :page_with_curl:
 ```javascript
 const express = require('express');
 const app = express();
@@ -20,7 +20,7 @@ const app = express();
 
 ## Menginstall Embedded JavaScript atau ejs
 - Pada terminal ketik ``` $ npm install ejs ```
-- Maka sekarang kita bisa menggunakan format ejs sebagai ganti dari html, misalnya dari index.html menjadi index.ejs
+- Maka sekarang kita bisa menggunakan format ejs sebagai ganti dari html, misalnya dari index.html :page_with_curl: menjadi index.ejs :page_with_curl:
 - EJS memungkinkan kita untuk memasukan kode javascript pada struktur halaman
 - Simbol ``` <% %> ``` digunakan untuk menetapkan variabel, contoh : ``` <% const item = {id: 4, name: 'tomat'} %> ```
 - Simbol ``` <%= %> ``` digunakan untuk mencetak variabel yang akan ditampilkan, contoh : ``` <%= item.id %> ```, ``` <%= item.name %> ```
@@ -58,7 +58,7 @@ app.listen(3000);
 ```
 
 ## CSS dan Gambar
-- Style dan gambar disimpan di folder ``` public ```
+- Style dan gambar disimpan di folder ``` public ``` :file_folder:
 ``` javascript
 const express = require('express');
 const app = express();
@@ -76,7 +76,7 @@ app.get('/top', (req, res) => {
 
 app.listen(3000);
 ```
-- Untuk memuat style dan gambar untuk diaplikasikan file top.ejs, maka diperlukan kode berikut
+- Untuk memuat style dan gambar untuk diaplikasikan file top.ejs :page_with_curl:, maka diperlukan kode berikut
 ``` html
 <link rel="stylesheet" href="/css/style.css">
 <img src="/images/top.png">
@@ -91,7 +91,7 @@ app.listen(3000);
    {id: 3, name: 'bawang'}
 ]; %>
 ```
-- Pada file .ejs, variabel items yang menggunakan ```forEach``` menerapkan fungsi yang ditentukan untuk setiap item dalam array tertentu secara individual
+- Pada file .ejs :page_with_curl:, variabel items yang menggunakan ```forEach``` menerapkan fungsi yang ditentukan untuk setiap item dalam array tertentu secara individual
 ``` javascript
 <% items.forEach((item) => { %>
 <li>
@@ -110,7 +110,7 @@ app.listen(3000);
 ## Mengintegrasikan Database
 - Untuk menghubungkan MySQL ke Node.js https://www.mysqltutorial.org/mysql-nodejs/connect/
 - install paket mysql di terminal : ```$ npm install mysql```
-- Import paket mysql pada file app.js
+- Import paket mysql pada file app.js :page_with_curl:
 ``` javascript
  const mysql = require('mysql');
  const connection = mysql.createConnection({
@@ -122,7 +122,7 @@ app.listen(3000);
 ```
 
 ## Menggunakan Database
-- Pada file app.js, atur route agar dapat mengakses data dari database
+- Pada file app.js :page_with_curl:, atur route agar dapat mengakses data dari database
 ``` javascript
 app.get('/index', (req, res) => {
   // Mengakses data dari database 
@@ -157,4 +157,68 @@ app.get('/index', (req, res) => {
 ## Refactory
 ``` javascript
 <%- include('header'); %>
+```
+
+## Logout
+``` javascript
+req.session.destroy((error) => {
+  res.redirect('/list');
+});
+```
+
+## Mengalihkan Tampilan Menggunakan Status Login
+- app.js :page_with_curl:
+``` javascript
+app.use((req, res, next) => {
+    if (req.session.userId === undefined) {
+        res.locals.username = 'Tamu';
+        res.locals.isLoggedIn = false;
+    } else {
+        res.locals.username = req.session.username;
+        res.locals.isLoggedIn = true;
+    }
+    next();
+});
+```
+
+- header.ejs :page_with_curl:
+``` html
+<% if(locals.isLoggedIn){ %>
+  <li><a href="/logout">Logout</a></li>
+<% } else { %>
+  <li><a href="/login">Login</a></li>
+<% } %>
+```
+
+## Membatasi Akses pada Halaman
+list.ejs
+``` html
+<ul class="list">
+  <% articles.forEach((article) => { %>
+    <li>
+      <% if(article.category === 'limited'){ %>
+        <i>MEMBER ONLY</i>
+      <% } %>
+      <h2><%= article.title %></h2>
+      <p><%= article.summary %></p>
+      <a href="/article/<%= article.id %>">Baca selengkapnya</a>
+    </li>
+  <% }) %>
+</ul>
+```
+
+article.ejs
+``` html
+<div class="article">
+  <% if(article.category === 'all'){ %>
+  <h1><%= article.title %></h1>
+  <p><%= article.content %></p>
+<% } %>
+  
+<% if(article.category === 'limited'){ %>
+  <i>MEMBER ONLY</i>
+  <h1><%= article.title %></h1>
+  <p><%= article.content %></p>
+<% } %>
+</div>
 ```

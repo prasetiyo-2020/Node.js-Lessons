@@ -153,3 +153,8 @@ app.get('/index', (req, res) => {
 
 ## Menggunakan redirect (pengalihan)
 - ``` res.redirect('/index') ```
+
+## Refactory
+``` javascript
+<%- include('header'); %>
+```

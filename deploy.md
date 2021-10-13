@@ -1,6 +1,6 @@
 # Deploy Node.js
 
-## Heroku
+## 1. Heroku
 1. Create Heroku Account https://www.heroku.com/
 2. Pergi ke Dashboard https://dashboard.heroku.com/apps
 ![Screenshot (381)](https://user-images.githubusercontent.com/84963363/137065726-7751c858-43e2-4511-a7a1-16a71758e277.png)
@@ -39,6 +39,8 @@ $ git init
 $ heroku git:remote -a <nama-app>
 > set git remote heroku to https://git.heroku.com/<your-app>.git
 ```
+
+## 2. Pengaturan agar aplikasi dapat berjalan di hosting
 📃 app.js
 ``` javascript
 const connection = mysql.createConnection({

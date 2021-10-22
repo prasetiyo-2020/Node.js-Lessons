@@ -1,6 +1,11 @@
 /*
-  Important : Try code result with FAKE DATA
+  Penting: untuk mencoba kode singup silahkan masuk dengan link berikut dan gunakan data palsu sebagai inputan,
   https://blog-prasetiyo.herokuapp.com/signup
+  Melakukan pemeriksaan terhadap :
+  - Nama Pengguna Kosong
+  - Email Kosong
+  - Password Kosong
+  - Email Duplikat
 */
 
 app.post('/signup',
